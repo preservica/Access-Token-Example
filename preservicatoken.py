@@ -82,7 +82,7 @@ def newtoken(config_input,tokenfilepath):
 
     #build the query string and get a new token
 
-    querystring = {"username":usernameval,"password":passwordval,"tenant":tenantval}
+    payload = {"username":usernameval,"password":passwordval,"tenant":tenantval}
 
     headers = {
         'Accept': "*/*",
@@ -94,7 +94,7 @@ def newtoken(config_input,tokenfilepath):
         'cache-control': "no-cache"
         }
 
-    response = requests.request("POST", url, headers=headers, params=querystring)
+    response = requests.request("POST", url, headers=headers, data=payload)
     
     print(response.raise_for_status())
 
